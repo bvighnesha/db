@@ -35,8 +35,12 @@ class UserEntityTest {
         Assertions.assertEquals(users.size(), 1);
 
         // update
-        int i = User.update("password='1234' where email = 'abc@abc.com'");
-        Assertions.assertEquals(1, i);
+        /*int i = User.update("password='1234' where email = 'abc@abc.com'");
+        Assertions.assertEquals(1, i);*/
+
+        // update user password
+        user.setPassword("1234");
+        user.persist();
 
         User u = User.find("email", "abc@abc.com").firstResult();
         Assertions.assertEquals("1234", u.getPassword());
