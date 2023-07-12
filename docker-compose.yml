@@ -1,0 +1,15 @@
+version: '3' # specify docker-compose version
+
+services:
+  postgres:
+    image: docker.io/library/postgres:15-alpine
+    ports:
+      - "15432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vignesha_db
+      POSTGRES_USER: vignesha
+    volumes:
+      - ./data:/var/lib/postgresql
+      - ./pg-initdb.d:/docker-entrypoint-initdb.d
